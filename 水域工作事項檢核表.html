@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>東河國小行政與實務流程</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: #334155;
+        }
+        .accordion-button {
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        .accordion-button.active {
+            background-color: #e2e8f0;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+        .accordion-content.open {
+            max-height: 500px; /* Adjust as needed */
+            transition: max-height 0.5s ease-in;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8 md:p-12">
+
+    <div class="max-w-4xl mx-auto bg-white shadow-xl rounded-2xl p-6 sm:p-8">
+        <h1 class="text-3xl sm:text-4xl font-bold text-center mb-6 text-indigo-800">東河國小行政與實務流程</h1>
+        <p class="text-center text-gray-600 mb-8">點擊各項標題以展開或收合詳細步驟。</p>
+
+        <div id="accordion-container" class="space-y-4">
+            <!-- JavaScript will generate the accordion items here -->
+        </div>
+    </div>
+
+    <script>
+        // 筆記內容的結構化資料
+        const sections = [
+            {
+                title: "請假流程",
+                items: [
+                    "差勤-其他假別-批核",
+                    "（1-5）請假代理人，事由要寫清楚",
+                    "公假時數不能小數點",
+                    "加班做4休30",
+                    "請補休網頁點法：差勤-補休"
+                ]
+            },
+            {
+                title: "核銷過程",
+                items: [
+                    "現場東西要拍照",
+                    "<b>主要流程：</b>經費計畫表 ➡ ️收支明細 ➡ ️憑證 ➡ ️分批結報表*4 ➡ ️分批付款表",
+                    "<b>經費計畫表：</b>要先印出來，該項目上次的收支明細（金額大小遞增排序）",
+                    "<b>用途說明：</b>打給主計看",
+                    "<b>核定文函：</b>不用蓋正本相符，影本才需要蓋",
+                    "<b>憑證（領據、發票）：</b>給政府看。領據：帳戶非郵局或農會須扣手續費用50元，新人員要附帳戶影本",
+                    "<b>分批核結結報表：</b>4份（兩份學校、兩份政府）",
+                    "<b>收支明細表（學校要的）：</b>便當、學員、助教（工作人員）簽名，每一個項目都要有憑證",
+                    "<b>請購單：</b>請購日期比核銷發票日期早，要注意發票時間",
+                    "<b>要附文件：</b>估價單、施工狀況圖、各項計畫的經費概算表",
+                    "<b>二代健保：</b>0.0211"
+                ]
+            },
+            {
+                title: "預借流程",
+                items: [
+                    "<b>所需資料：</b>預借單、預借簽、計畫經費概算表",
+                    "剩0元沒事，有餘款要還錢",
+                    "救生員預借轉正 （現領）",
+                    "雙方告知預借，預借轉正就是給過了"
+                ]
+            },
+            {
+                title: "公文函與系統操作",
+                items: [
+                    "<b>發文：</b>發到縣政府",
+                    "<b>內部公文：</b>單簽一字（不會出去）",
+                    "<b>決行層級：</b>第一層決行由下到上，第二層決行到主任",
+                    "<b>函文資料：</b>函、基金憑證正本、分批結報表*2、核定文，送縣府",
+                    "東河國小函稿正本給勳哥，影本蓋與正本相符",
+                    "<b>公文系統操作：</b>取公文號、線上簽核，按傳送",
+                    "<b>函草稿：</b>一個函一個函稿，網頁操作：函 左上角 發文 電子交換格式，正本要印出來，電子交換取消改點紙本列印，附件要打說明",
+                    "公文都要附函、跟計畫書",
+                    "<b>會辦單位：</b>不能只點主計，要連同人名一起點",
+                    "<b>加簽：</b>公文下載，三個勾起來"
+                ]
+            },
+            {
+                title: "掃描步驟",
+                items: [
+                    "掃描",
+                    "儲存到黃心怡檔案",
+                    "放好後先按傳送",
+                    "如有背面需掃描，按檔案+號"
+                ]
+            },
+            {
+                title: "船外機操作",
+                items: [
+                    "1. 推出機組、油桶",
+                    "2. 取出大水桶，放置於船外機下，裝水。",
+                    "3. 連結油桶，透過幫浦加油（加油前油箱蓋轉最緊，吸油後氣閥鬆開，持續按壓至無法按壓）",
+                    "4. 95汽油機油比例50:1，機油瓶身有水上摩托車圖案。",
+                    "5. 確認安全鎖連結、檔位為N、油門無轉動",
+                    "6. 拉繩發動，發動時油門可以轉一點點；若無法啟動則打開氣門，發動成功後立刻關閉。",
+                    "7. 測試引擎與螺旋槳運轉，注意與水桶距離",
+                    "8. 確認降溫水有正常排出",
+                    "9. 拔除油管，將剩餘燃料用盡後自動熄火。",
+                    "10. 鑰匙拔除即可熄火。"
+                ]
+            },
+            {
+                title: "備忘錄",
+                items: [
+                    "<b>計畫相關：</b>曾經做的計畫不能用，要看最近一次浮潛新計劃下去改變。不知道怎麼改要與校長討論，原本母計畫留下來參考用，修正完後活動計畫要發公文到縣府。同步請主任開線上研習，代碼處理好給老師們。",
+                    "<b>研習：</b>報名表單要確認單位與職稱，記得創群組。賴的ID一定要要，也要詢問主辦方有沒有需要問的問題。",
+                    "<b>預算：</b>研習一堂課50分鐘等於一個鐘點，90分鐘不停算兩個鐘點。離島會有代課費用。",
+                    "<b>編碼：</b>2-2買東西，2-3場館，3開頭培訓老師，4開頭給學生玩（瑣碎事項）",
+                    "<b>統編：</b>東河國小統編 08104274"
+                ]
+            }
+        ];
+
+        // 頁面加載完成後執行
+        document.addEventListener('DOMContentLoaded', () => {
+            const accordionContainer = document.getElementById('accordion-container');
+
+            // 動態生成手風琴項目
+            sections.forEach((section, index) => {
+                const button = document.createElement('button');
+                button.className = 'accordion-button w-full flex justify-between items-center bg-gray-100 hover:bg-gray-200 text-left p-4 rounded-xl font-medium text-lg focus:outline-none transition-all duration-300';
+                button.innerHTML = `
+                    <span>${section.title}</span>
+                    <svg class="w-5 h-5 transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                `;
+                button.setAttribute('aria-expanded', 'false');
+
+                const content = document.createElement('div');
+                content.className = 'accordion-content bg-white p-4 rounded-b-xl border-t-2 border-gray-100';
+                content.innerHTML = `
+                    <ul class="list-disc list-inside space-y-2">
+                        ${section.items.map(item => `<li class="text-base text-gray-700">${item}</li>`).join('')}
+                    </ul>
+                `;
+
+                accordionContainer.appendChild(button);
+                accordionContainer.appendChild(content);
+
+                // 綁定點擊事件
+                button.addEventListener('click', () => {
+                    const isOpen = content.classList.contains('open');
+                    
+                    // 關閉所有手風琴
+                    document.querySelectorAll('.accordion-content.open').forEach(item => {
+                        item.classList.remove('open');
+                        item.previousElementSibling.classList.remove('active');
+                        item.previousElementSibling.querySelector('svg').style.transform = 'rotate(0deg)';
+                        item.previousElementSibling.setAttribute('aria-expanded', 'false');
+                    });
+
+                    // 如果原本是關閉的，則打開當前手風琴
+                    if (!isOpen) {
+                        content.classList.add('open');
+                        button.classList.add('active');
+                        button.querySelector('svg').style.transform = 'rotate(180deg)';
+                        button.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
